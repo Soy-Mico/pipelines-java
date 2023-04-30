@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/Midietec-DevOps/Java%20Pipelines/_apis/build/status%2FSoy-Mico.pipelines-java?branchName=main)](https://dev.azure.com/Midietec-DevOps/Java%20Pipelines/_build/latest?definitionId=81&branchName=main)
 
 # Contributing
 
