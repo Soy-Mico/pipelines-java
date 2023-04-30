@@ -5,9 +5,21 @@
 
 trigger:
 - main
+    
+# Build across multiple platforms...
+strategy:
+  matrix:
+    linux:
+      imageName: "ubuntu-latest"
+    windows:
+      imageName: "windows-latest"
+    macos:
+      imageName: "macos-latest"
+  maxParallel: 3     
 
 pool:
-  vmImage: ubuntu-latest
+  #vmImage: ubuntu-latest
+  vmImage: $(imageName)
 
 steps:
 # Builds, tests and publishes results...
@@ -29,3 +41,4 @@ steps:
     summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml" 
     reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
     failIfCoverageEmpty: true    
+
