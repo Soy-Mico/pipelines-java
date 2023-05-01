@@ -9,17 +9,14 @@ trigger:
 # Build across multiple platforms...
 strategy:
   matrix:
-    linux:
-      imageName: "ubuntu-latest"
-    windows:
-      imageName: "windows-latest"
-    macos:
-      imageName: "macos-latest"
+    jdk10:
+      jdkVersion: "1.10"
+    jdk11:
+      jdkVersion: "1.11"
   maxParallel: 3     
 
 pool:
-  #vmImage: ubuntu-latest
-  vmImage: $(imageName)
+  vmImage: ubuntu-latest
 
 steps:
 # Builds, tests and publishes results...
@@ -28,7 +25,7 @@ steps:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
+    jdkVersionOption: $(jdkVersion)
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
